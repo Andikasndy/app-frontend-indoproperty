@@ -10,14 +10,14 @@ const Listing = () => {
     //console.log(data)
     if (isError){
         return(
-            <div>
+            <div className="flexCenter">
                 <span>terjadi Error di saat fetching data</span>
             </div>
         )
     }
     if (isLoading){
         return(
-            <div>
+            <div className="h-64 flexCenter">
                 <PuffLoader
                 height = '80'
                 width = '80'

@@ -1,11 +1,12 @@
 import React from "react";
 import FaHeartBtn from "./FaHeartBtn";
 import { MdOutlineBathtub, MdOutlineBed, MdOutlineGarage } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Item = ({property}) => {
+    const navigate = useNavigate()
     return (
-        <div className="rounded-2xl p-4 bg-white">
+        <div onClick={()=> navigate(`../listing/${property.id}`)} className="rounded-2xl p-4 bg-white">
             <div className="pb-3 relative">
                 <img src={property.image} alt={property.title} className="rounded-xl"/>
                 <div className="absolute top-3 right-3">
