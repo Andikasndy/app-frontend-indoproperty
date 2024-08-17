@@ -4,11 +4,13 @@ import Navbar from "./Navbar"
 import { useState, useEffect} from "react";
 import { MdClose, MdMenu } from "react-icons/md";
 import userIcon from "../assets/user.svg"
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Header = () =>{
     const [active, setActive] = useState(false)
     const [menuOpend, setmenuOpend ] = useState(false);
     const toggleMenu = () => setmenuOpend(!menuOpend)
+    const {loginWithRedirect, isAuthenticated, user, logout} = useAuth0()
 
     useEffect  (() =>{
         const handleScroll = () =>{
@@ -50,10 +52,12 @@ const Header = () =>{
                     :(<MdClose onClick={toggleMenu} className="xl:hidden crusor-pointer text-3xl hover:text-secondary"/>)} 
                     
                     {/* button */}
-                    <button className="btn-secondary flexCenter medium-16 rounded-2xl">
+                    {!isAuthenticated? (<button onClick={loginWithRedirect} className="btn-secondary flexCenter medium-16 rounded-2xl">
                         <img src={userIcon} alt="" height={22} width={22}/>
                         <span>Login</span>
-                    </button>
+                    </button>) : (
+                         <ProfileMenu/>
+                    )}
                     </div>
                 </div>
             </div>
