@@ -5,6 +5,7 @@ import { useState, useEffect} from "react";
 import { MdClose, MdMenu } from "react-icons/md";
 import userIcon from "../assets/user.svg"
 import { useAuth0 } from "@auth0/auth0-react";
+import ProfileMenu from "./ProfileMenu";
 
 const Header = () =>{
     const [active, setActive] = useState(false)
@@ -56,7 +57,7 @@ const Header = () =>{
                         <img src={userIcon} alt="" height={22} width={22}/>
                         <span>Login</span>
                     </button>) : (
-                         <ProfileMenu/>
+                         <ProfileMenu user={user} logout={logout}/>
                     )}
                     </div>
                 </div>

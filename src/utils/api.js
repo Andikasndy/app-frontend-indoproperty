@@ -36,3 +36,19 @@ export const getProperty = async(id) =>{
         throw error
     }
 }
+
+//mengambil fuction CreateUser dari backend untuk memasukan data ke server
+export const createUser = async(email, token) => {
+    try {
+        
+        await api.post(`/user/register`, {email}, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+    } catch (error) {
+        toast.error("ada masalah terjadi, coba sekali lagi")
+        throw error
+    }
+}
